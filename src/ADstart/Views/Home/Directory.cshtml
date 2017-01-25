@@ -1,0 +1,176 @@
+﻿@model ADstart.Models.DirectoryModel
+    
+@{
+    ViewData["Title"] = "Contact 2";
+}
+
+
+ 
+
+
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+ 
+
+
+
+@*Test bingding*@
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <table style="display:none" cellpadding="0" cellspacing="0">
+        <tr>
+            <th colspan="2" align="center">For bind test:Person Details</th>
+        </tr>
+        <tr>
+            <td>PersonId: </td>
+            <td>
+                @Html.TextBoxFor(m => m.UserId)
+            </td>
+        </tr>
+        <tr>
+            <td>Name: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>Gender: </td>
+            <td>
+                @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
+                   { new SelectListItem{Text="Male", Value="M"},
+                     new SelectListItem{Text="Female", Value="F"}}, "Please select")
+            </td>
+        </tr>
+        <tr>
+            <td>City: </td>
+            <td>
+                @Html.TextBoxFor(m => m.City)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}
+
+
+@*Add Group *@
+@using (Html.BeginForm("addGroup", "Home", FormMethod.Post))
+{
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th colspan="2" align="center">Add Group:</th>
+        </tr>
+
+
+        <tr>
+            <td>Group Name(CN): </td>
+            <td>
+                @Html.TextBoxFor(m => m.CN)
+            </td>
+        </tr>
+
+        <tr>
+            <td>samAccountName: </td>
+            <td>
+                @Html.TextBoxFor(m => m.SamAccountName)
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}
+
+@*Add OU *@
+@using (Html.BeginForm("addOU", "Home", FormMethod.Post))
+{
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th colspan="2" align="center">Add OU:</th>
+        </tr>
+
+
+        <tr>
+            <td>OU: </td>
+            <td>
+                @Html.TextBoxFor(m => m.OU)
+            </td>
+        </tr>
+
+        <tr>
+            <td>OU Description: </td>
+            <td>
+                @Html.TextBoxFor(m => m.OUDescription)
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}
+
+@*Create User *@
+@using (Html.BeginForm("createUser", "Home", FormMethod.Post))
+{
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th colspan="2" align="center">Create User:</th>
+        </tr>
+
+
+        <tr>
+            <td>UserName: </td>
+            <td>
+                @Html.TextBoxFor(m => m.UserName)
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>samAccountName: </td>
+            <td>
+                @Html.TextBoxFor(m => m.SamAccountName)
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}
+
+@*Create Bulk user *@
+@using (Html.BeginForm("CreatBulkADUsersFromCSVFile", "Home", FormMethod.Post))
+{
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th colspan="2" align="center">Create Users with .CSV file:</th>
+        </tr>
+
+
+        <tr>
+            <td>Your Name: </td>
+            <td>
+                @Html.TextBoxFor(m => m.OperatorPerson)
+            </td>
+        </tr>
+
+
+
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}
